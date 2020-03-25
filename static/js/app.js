@@ -30,9 +30,17 @@ button.on("click", function() {
     var inputValue = inputElement.property("value");
     console.log(inputValue);
 
-    //filters the date 
-    var filteredData = tableData.filter(date => date.datetime === inputValue);
-    console.log(filteredData);
+    //filters the date or city
+    if (inputValue != "") {
+        var filteredData = tableData.filter(date => date.datetime === inputValue);
+        console.log(filteredData);
+    }
+    else {
+        var inputElement = d3.select("#city");
+        var inputValue = inputElement.property("value");
+        var filteredData = tableData.filter(city => city.city === inputValue);
+        console.log(filteredData);
+    }
     
     //clears the form before adding the new filtered data
     var row = d3.select("tbody");
